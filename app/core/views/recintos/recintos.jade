@@ -1,0 +1,35 @@
+ion-view(hide-nav-bar='true')
+	ion-content.recintos-view
+		.filter-tabs
+			.row
+				.col.clickable(ng-class="{'active': recintos.currentTab == 1}" ng-click="recintos.setCurrentTab(1)")
+					span 
+						| Todos
+				.col.clickable(ng-class="{'active': recintos.currentTab == 2}" ng-click="recintos.setCurrentTab(2)")
+					span
+						| Cercanos
+				.col.clickable(ng-class="{'active': recintos.currentTab == 3}" ng-click="recintos.setCurrentTab(3)")
+					span
+						| Ranking
+		.map-container(ng-show="recintos.currentTab == 2")
+			leaflet(lf-center="santiago" layers="layers" markers="markers" height="200px" width="100%" defaults="options")
+		.list.recintos-list
+			.loading-futbol(ng-show="recintos.loading")
+				span.icon-futbol.spin
+			.item(ng-if="recintos.allRecintos.length == 0")
+				p.text-center No hay Salas disponibles
+			.item.item-thumbnail-left.clickable(ng-repeat="recinto in recintos.allRecintos" ng-click="recintos.goToRecinto(recinto)")
+				img(ng-src="{{recinto.img_thumb_url}}")
+				h2 {{recinto.name}}
+				p {{recinto.commune.name}}, {{recinto.region.name}}
+				.modes
+					span.tag(ng-repeat="mode in recinto.modes")
+						| {{ recintos.replaceMode(mode) }}
+				.stars
+					span(ng-repeat="r in [1,2,3,4,5]" ng-class="{'gold': r <= recinto.ranking}")
+						i.icon.ion-android-star
+				.heart(ng-class="{'red': recintos.isFavorite(recinto)}" ng-show="!recintos.isGuest")
+					span
+						i.icon.ion-heart
+			.spacer
+				br

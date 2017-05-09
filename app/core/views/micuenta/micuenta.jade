@@ -1,0 +1,27 @@
+ion-view(hide-nav-bar='true')
+	ion-content.micuenta-view
+		.stadium-bar
+		.img-profile
+			img(src="../../../images/icon-futbol.png")
+		.list
+			.item.clickable(ui-sref="perfil" ng-show="!micuenta.isGuest")
+				p MI PERFIL
+			.divider
+			.item.clickable(ui-sref="terminos")
+				p TÉRMINOS Y CONDICIONES
+			.divider
+			.item.clickable(ng-click="micuenta.openMessageModal()")
+				p ENVÍANOS UN MENSAJE
+		br
+		.perfil-footer
+			.row
+				button.btn-cancel(ng-click="micuenta.logOut()" ng-show="!micuenta.isGuest")
+					| Cerrar sesion
+				button.primary-btn(ui-sref="login" ng-show="micuenta.isGuest")
+					| Iniciar sesion
+			.row
+				p Todos los derechos reservados. 2017 ® EnsayApp.
+	script(id="message-modal.html" type="text/ng-template")
+		ion-modal-view
+			include ../common/message-modal
+

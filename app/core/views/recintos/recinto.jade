@@ -1,0 +1,151 @@
+ion-view(hide-nav-bar="true")
+	.home-header
+		.title
+			.logo
+		button.back-button.force-show(ui-sref="home.recintos")
+			i.icon.ion-ios-arrow-thin-left
+	ion-content.recinto-view
+		.bg-gray
+			ion-slides(auto-play="true" options="recinto.sliderOptions" slider="recinto.slider")
+				ion-slide-page(ng-repeat="img in recinto.gallery")
+					.img-container(ng-style="recinto.getBg(img)")
+			.recinto-name(ng-show="recinto.showSlider")
+				h3 {{recinto.currentRecinto.name}}
+			.row.btn-row(ng-show="recinto.fields.length !== 0 && (recinto.currentRecinto.online_payments == true || recinto.currentRecinto.local_payments == true) ")
+				button.primary-btn(ng-click="recinto.goToRent()")
+					| Arrendar Cancha
+			.row
+				p Valoración
+			.row.ranking
+				.stars
+					span(ng-repeat="r in [1,2,3,4,5]" ng-class="{'gold': r <= recinto.currentRecinto.ranking}" ng-click="recinto.openCommentModal()")
+						i.icon.ion-android-star
+		.list
+			.item.item-icon-right.clickable(ng-class="{'active': recinto.currentItem == 1}" ng-click="recinto.setCurrentItem(1)")
+				p Descripción
+				span
+					i.icon(ng-class="{'ion-android-arrow-dropup': recinto.currentItem == 1, 'ion-android-arrow-dropdown': recinto.currentItem !== 1}")
+			.list-inset(ng-show="recinto.currentItem == 1")
+				.row
+					.col-33
+						p 
+							strong
+								| Dirección:
+					.col-66
+						p.text-right.clickable.map-link(ng-click="recinto.goToAddress(recinto.currentRecinto)")
+							span
+								i.icon.ion-ios-location-outline
+							span.text {{recinto.currentRecinto.street_name}} {{recinto.currentRecinto.street_number}} . {{recinto.currentRecinto.commune_name}}
+				.row(ng-hide="!recinto.currentRecinto.phone")
+					.col-33
+						p 
+							strong
+								| Telefonos:
+					.col-66
+						p.text-right {{ recinto.currentRecinto.phone_text }}
+				.row(ng-if="recinto.currentRecinto.price_range && recinto.currentRecinto.price_range.price_min")
+					.col-33
+						p 
+							strong
+								| Precios:
+					.col-66
+						p.text-right Entre {{recinto.currentRecinto.price_range.price_min | currency:$:0}} y {{recinto.currentRecinto.price_range.price_max | currency:$:0}}
+				.row(ng-if="recinto.currentRecinto.payment_types")
+					.col-33
+						p 
+							strong
+								| Tipos de Pago:
+					.col-66
+						p.text-right 
+							span {{recinto.currentRecinto.payment_types}}
+				.row(ng-hide="!recinto.currentRecinto.email")
+					.col-33
+						p 
+							strong
+								| Email:
+					.col-66
+						p.text-right {{recinto.currentRecinto.email}}
+				.row(ng-hide="!recinto.currentRecinto.web")
+					.col-33
+						p 
+							strong
+								| Sitio web:
+					.col-66
+						p.text-right
+							a(ng-href="//{{recinto.currentRecinto.web}}") {{recinto.currentRecinto.web}}
+				.row(ng-hide="!recinto.currentRecinto.complements")
+					.col-33
+						p 
+							strong
+								| Complementos:
+					.col-66
+						p.text-right {{recinto.currentRecinto.complements}}
+				.row(ng-if="recinto.currentRecinto.email")
+					button.secondary-btn(ng-click="recinto.openMessageModal()") Enviar Mensaje
+			.item.item-icon-right.clickable(ng-class="{'active': recinto.currentItem == 2}" ng-click="recinto.setCurrentItem(2)" ng-if="recinto.currentRecinto.local_schedule")
+				p Horarios de Reserva
+				span
+					i.icon(ng-class="{'ion-android-arrow-dropup': recinto.currentItem == 2, 'ion-android-arrow-dropdown': recinto.currentItem !== 2}")
+			.list-inset(ng-show="recinto.currentItem == 2" style="padding-bottom: 70px;")
+				.row
+					.col
+						p 
+							strong
+								| {{recinto.currentRecinto.local_schedule.days || recinto.currentRecinto.local_schedule}}
+					.col(ng-if="recinto.currentRecinto.local_schedule.hour_min")
+						p.text-right {{recinto.currentRecinto.local_schedule.hour_min}} - {{recinto.currentRecinto.local_schedule.hour_max}}
+				.row
+					.col
+						p 
+							| Los Horarios pueden variar según cancha
+				.row(ng-hide="recinto.fields.length == 0")
+					button.secondary-btn(ng-click="recinto.goToRent()")
+						| Arrendar Cancha
+
+			.item.item-icon-right.clickable(ng-class="{'active': recinto.currentItem == 3}" ng-click="recinto.setCurrentItem(3)" ng-hide="recinto.fields.length == 0")
+				p Canchas
+				span
+					i.icon(ng-class="{'ion-android-arrow-dropup': recinto.currentItem == 3, 'ion-android-arrow-dropdown': recinto.currentItem !== 3}")
+			.list-inset.canchas(ng-show="recinto.currentItem == 3")
+				.item(ng-repeat="cancha in recinto.fields")
+					p Cancha {{cancha.number}} - {{cancha.material}} {{cancha.mt_height + 'mt x ' +cancha.mt_width + 'mt'}}
+					span.badge
+						| {{cancha.mode}}
+					span.badge.light(ng-if="cancha.light")
+						| Iluminada
+						i.icon.ion.ion-ios-lightbulb
+					span.badge.roof(ng-if="cancha.roof")
+						| Techada
+						i.icon.ion.ion-chevron-up
+			.item.item-icon-right.active
+				p Comentarios
+				span
+					i.icon.ion-android-arrow-dropdown
+			.list-inset
+				.item(ng-if="recinto.comments.length == 0")
+					p.text-center No hay comentarios aún.
+				.list.card.comment-list(ng-repeat="comment in recinto.comments | orderBy: 'created_at' : true")
+					.item.item-avatar
+						img(ng-src="{{comment.user_img_url}}" err-src="../../../images/icon-futbol.png")
+						h2 
+							span 
+								{{comment.user_name}}
+							.stars
+								span(ng-repeat="r in [1,2,3,4,5]" ng-class="{'gold': r <= comment.points}")
+									i.icon.ion-android-star
+						p {{comment.created_at | date : 'hh:mm dd-MM-yyyy'}}
+					.item.item-body
+						p {{comment.text}}
+				.row
+					button.secondary-btn(ng-click="recinto.openCommentModal()")
+						| Comentar
+					
+	script(id="message-modal.html" type="text/ng-template")
+		ion-modal-view
+			include ../common/message-modal
+	script(id="auth-modal.html" type="text/ng-template")
+		ion-modal-view
+			include ../common/auth-modal
+	script(id="comment-modal.html" type="text/ng-template")
+		ion-modal-view
+			include ./comment-modal

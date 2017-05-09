@@ -1,0 +1,38 @@
+ion-view(hide-nav-bar='true')
+	.home-header
+		.title
+			.logo
+		button.back-button.force-show(ng-click="closeModal()")
+			i.icon.ion-android-close
+	ion-content.contact-view.in-modal
+		h3.text-center Enviar Mensaje
+		p.subtitle.text-center
+			small Llena el formulario de contacto
+		form(name="contactForm" ng-submit="sendMessage(contact, contactForm)" novalidate)
+			.list
+				.message-alert(ng-if="alertMessage.show")
+					p
+						span
+							i.icon(ng-class="{'ion-android-alert': !alertMessage.isOk, 'ion-checkmark-circled': alertMessage.isOk}")
+					p {{alertMessage.text}}
+				.col
+					.item.item-input.item-floating-label(ng-class="{'has-error': hasError(contactForm.full_name), 'ok': isOk(contactForm.full_name)}")
+						span.input-label Ingresar Nombre Completo
+						input(type="text" name="full_name" placeholder="Ingresar Nombre Completo" ng-model="contact.full_name" required)
+				.col
+					.item.item-input.item-floating-label(ng-class="{'has-error': hasError(contactForm.email), 'ok': isOk(contactForm.email)}")
+						span.input-label Ingresar Correo
+						input(type="email" name="email" placeholder="Ingresar Correo" ng-model="contact.email" required)
+				.col
+					.item.item-input.item-floating-label(ng-class="{'has-error': hasError(contactForm.phone), 'ok': isOk(contactForm.phone)}")
+						span.input-label Ingresar Fono
+						input(type="tel" name="phone" placeholder="Ingresar Fono" ng-model="contact.phone" )
+				.col
+					.item.item-input.item-floating-label(ng-class="{'has-error': hasError(contactForm.message), 'ok': isOk(contactForm.message)}")
+						span.input-label Ingresar Mensaje
+						textarea(name="message" placeholder="Ingresar Mensaje" ng-model="contact.message" required)
+			.perfil-footer
+				.row
+					button.primary-btn(type="submit")
+						| ENVIAR
+

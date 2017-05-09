@@ -1,0 +1,19 @@
+form(role='form', name='loginForm', ng-submit='login.signIn(login.user)', novalidate='novalidate')
+	.logo
+	p(ng-hide="login.isModal") La mejor APP, para los mejores ensayos.
+	p(ng-show="login.isModal") {{login.title}}
+	.list
+		.msg-error(ng-show="login.errorMessage.show")
+			p {{login.errorMessage.msg}}
+		.item.item-input(ng-class="{'input-error': loginForm.userEmail.$dirty && loginForm.userEmail.$invalid}")
+			span
+				i.icon.ion-android-person
+			input(type='email' ng-model='login.user.email' placeholder='Correo' name="userEmail" required)
+		.item.item-input(ng-class="{'input-error': loginForm.userPassword.$dirty && loginForm.userPassword.$invalid}")
+			span
+				i.icon.ion-android-lock
+			input(type='password' ng-model='login.user.password' minlength="6" placeholder='Contraseña' name="userPassword" required)
+		button.primary-btn(type="submit" ng-disabled="loginForm.$invalid || loading")
+			| Iniciar sesión
+		p.clickable.link(ng-click="login.showRecover()")
+			| ¿Olvidaste tu contraseña?

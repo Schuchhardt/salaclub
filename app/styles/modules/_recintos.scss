@@ -1,0 +1,298 @@
+//_recintos.scss
+
+.recintos-view{
+	@media(min-width: $tablet){
+		padding: 0 20%;
+	}
+	.leaflet-container a.leaflet-control-layers-toggle, .leaflet-bottom{
+		display: none;
+	}
+	.filter-tabs{
+	    padding: 15px 20px;
+	    text-align: center;
+	    .row{
+		    padding: 0;
+		    height: 40px;
+	    }
+	    .col{
+	    	border: 1px solid $grey;
+			&.active{
+				background-color: $black;
+				color: $white;
+			}
+			span{
+				position: relative;
+    			top: 5px;
+    			font-size: 11px;
+			}
+	    }
+	}
+	.recintos-list{
+    	padding: 0px 10px;
+    	.loading-futbol{
+    		padding: 30px 0;
+    		text-align: center;
+    		span{
+    			margin: auto;
+    		}
+    	}
+    	.item{
+    		border-width: 1px 0px;
+    		h2{
+				font-family: 'Montserrat';
+				font-size: 13px;
+				color: $black;
+				font-weight: bolder;
+    		}
+    		p{
+			    position: relative;
+			    bottom: 3px;
+    			font-size: 11px;
+    		}
+    		.stars{
+    			span{
+    				display: inline-block;
+    				color: $lightgray;
+    				&.gold{
+    					color: $yellow;
+    				}
+    			}
+    		}
+    		.modes{
+    			height: 30px;
+    		}
+    		.tag{
+			    background-color: $lightgray;
+			    margin-right: 10px;
+			    font-size: 12px;
+			    padding: 5px;
+			    border-radius: 10px;
+    		}
+    		.heart{
+				position: absolute;
+				right: 10px;
+				top: 45px;
+				color: white;
+				background-color: $lightgray;
+				height: 20px;
+				width: 20px;
+				padding: 4px 5px;
+				border-radius: 100%;
+				font-size: 13px;
+				&.red{
+					background-color: $red;
+				}
+    		}
+    		@media(max-width: $tablet){
+				padding-left: 80px;
+				img{
+					max-width: 60px;
+					max-height: 60px;
+					top: 20px;
+				}
+			}
+    	}
+	}
+
+	.leaflet-popup-content{
+	    top: 10px;
+	    position: absolute;
+	    background: black;
+	    color: white;
+	    text-align: center;
+	    border-radius: 9px;
+	    padding: 5px 10px;
+	    font-size: 14px;
+	    margin-left: -81px;
+	    width: 181px;
+	}
+	
+	.leaflet-popup-tip-container {
+		display: none;
+	}
+	.leaflet-popup-close{
+		color: white;
+    	padding-left: 111px;
+	}
+}
+
+
+.recinto-view{
+	top: 100px;
+	@media(min-width: $tablet){
+		padding: 0 20%;
+	}
+	.bg-gray{
+		background-color: $dark;
+		button{
+		    position: relative;
+		    width: 300px;
+		    margin: 0 auto;
+		    border: 0;
+		    font-size: 13px;
+		    top: -50px;
+		    z-index: 19;
+		}
+		p{
+		    width: 100%;
+		    text-align: center;
+		    top: -5px;
+		    color: $white;
+		    position: relative;
+		}
+		h3{
+			z-index: 100;
+		}
+	}
+	ion-slides{
+		max-height: 300px;
+		margin-bottom: 20px;
+	}
+	.swiper-container{
+		max-height: 400px;
+		z-index: 0 !important;
+	}
+	.swiper-wrapper{
+		z-index: 0 !important;
+	}
+	.swiper-slide{
+		z-index: 0 !important;	
+		box-sizing: inherit;
+		flex-shrink: none;
+	}
+	.swiper-pagination-bullet{
+		background: $whitesmoke;
+	}
+	.recinto-name{
+		text-align: center;
+		color: white;
+		position: absolute;
+		top: 50px;
+		z-index: 99;
+		left: 0;
+		width: 100%;
+		h3{
+		    color: white;
+		    font-weight: lighter;
+		    font-size: 26px;
+			background-color: rgba(0, 0, 0, 0.58);
+			height: 40px;
+			padding: 2px;
+			@include transition(background-color .3s linear);
+			&:hover{
+				background-color: $black;
+			}
+		}
+	}
+	.btn-row{
+		height: 40px;
+	}
+	.img-container{
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    background-position: center;
+		height: 300px;
+		img{
+		    width: 100%;
+		    display: block;
+		    margin: auto;
+		}
+		h3{
+		    position: absolute;
+		    text-align: center;
+		    width: 100%;
+		    top: 100px;
+		    color: white;
+		    font-weight: lighter;
+		    font-size: 26px;
+		}
+	}
+	.ranking{
+		height: 50px;
+	}
+	.map-link{
+		.icon{
+			font-size: 20px;
+    		margin: 0 5px;
+		}
+		.text{
+			text-decoration: underline;
+    		color: #387ef5;
+		}
+	}
+	.stars{
+	    width: 100%;
+	    text-align: center;
+	    color: $white;
+	    position: relative;
+	    font-size: 32px;
+	    letter-spacing: 10px;
+	    cursor: pointer;
+	    .gold{
+	    	color: $yellow;
+	    }
+	}
+	.secondary-btn{
+    	width: 60%;
+	}
+	.list-inset{
+		background-color: $grey;
+	    margin: 0;
+	    padding: 20px 10px;
+	}
+	.canchas{
+		padding: 0;
+		.item{
+			background-color: $grey;
+			height: 80px;
+		}
+		.badge{
+			background: $dark;
+			right: inherit;
+			left: 15px;
+			margin-top: 20px;
+			color: $white;
+			i{
+				font-size: 19px;
+    			padding: 0 7px;
+			}
+		}
+		.light{
+			margin-left: 120px;
+			color: $yellow;
+
+		}
+		.roof{
+			margin-left: 235px;
+		}
+	}
+	.item.active{
+		p{
+			color: $dark;
+			font-weight: 700;
+		}
+	}
+	.comment-list{
+		.stars{
+			position: absolute;
+			letter-spacing: 2px;
+			font-size: 24px;
+			top: 10px;
+			right: -30%;
+			color: $lightgray;
+		}
+		.item-body{
+			border-top: 0px;
+			padding-top: 0;
+			margin-top: -18px;
+		}
+	}
+	&.in-modal{
+		.stars span{
+			color: $lightgray;
+			&.gold{
+				color: $yellow
+			}
+		}
+	}
+}

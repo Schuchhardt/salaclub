@@ -1,0 +1,15 @@
+ion-view.home-tabs
+	.home-header
+		.title
+			.logo
+		ion-nav-back-button.button-clear.force-show(ng-click="goBack()")
+			i.ion-chevron-left
+	ion-tabs.tabs-stable.tabs-icon-top
+		ion-tab(ui-sref='home.partidos' title='Ensayos')
+			ion-nav-view(name='tab_partidos')
+		|         
+		ion-tab(ui-sref='home.recintos' title='Salas')
+			ion-nav-view(name='tab_recintos')
+		|         
+		ion-tab(ui-sref='home.micuenta' title='Mi Cuenta')
+			ion-nav-view(name='tab_micuenta')

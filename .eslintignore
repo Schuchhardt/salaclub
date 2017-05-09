@@ -1,0 +1,4 @@
+app/polyfills/**/*.js
+app/core/vendor/**/*.js
+app/bundle.js
+node_modules/**/*.js

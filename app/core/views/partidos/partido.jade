@@ -1,0 +1,62 @@
+ion-view(hide-nav-bar="true")
+	.home-header
+		.title
+			.logo
+		button.back-button.force-show(ui-sref="home.partidos")
+			i.icon.ion-ios-arrow-thin-left
+	ion-content.partidos-view.partido-view
+		.map-container
+			leaflet(lf-center="santiago" layers="layers" markers="marker" height="300px" width="100%" defaults="options" ng-show="marker")
+		.row.next-matches
+			h2 Detalle del Ensayo
+		.list
+			.list-inset
+				.row
+					.col-33
+						p 
+							strong
+								| Recinto:
+					.col-66
+						p.text-right {{partido.recinto.name}}
+				.row
+					.col-33
+						p 
+							strong
+								| Dirección:
+					.col-66
+						p.text-right.clickable.map-link(ng-click="partido.goToAddress(partido.recinto)")
+							span
+								i.icon.ion-ios-location-outline
+							span.text {{partido.recinto.street_name}} {{partido.recinto.street_number}} . {{partido.recinto.commune_name}}
+				.row
+					.col-33
+						p 
+							strong
+								| Dia y hora:
+					.col-66
+						p.text-right {{partido.reservation.start_time | date: "EEEE, dd 'de' MMMM yyyy, HH:mm 'hrs'"}}
+				.row
+					.col-33
+						p 
+							strong
+								| Sala:
+					.col-66
+						p.text-right {{partido.field.number}}
+				//- .row
+				//- 	.col-33
+				//- 		p 
+				//- 			strong
+				//- 				| Modalidad:
+				//- 	.col-66
+				//- 		p.text-right {{partido.field.mode}}
+				.row
+					.col-33
+						p 
+							strong
+								| Organizador:
+					.col-66
+						p.text-right {{partido.reservation.user_name}}
+				.row
+					button.secondary-btn(ng-click="partido.goToResumen()") VER MÁS
+				.row(ng-if="partido.currentUser && partido.currentUser.user.id == partido.reservation.user_id")
+					button.btn-cancel.secondary-btn.red-i(ng-click="partido.cancelReservation()") CANCELAR ENSAYO

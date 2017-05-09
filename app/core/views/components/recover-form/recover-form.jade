@@ -1,0 +1,24 @@
+.recover-form
+	form(role='form', name='recoverForm', ng-submit='recover.recoverPass(recover.forgotUser)', novalidate='novalidate')
+		.logo
+		p Para recuperar tu contraseña, ingresa tu correo y te enviaremos las instrucciones de recuperación
+		.list
+			.msg-error.success(ng-show="recover.recoverResponse.success")
+				p {{recover.recoverResponse.message}}
+			label.item.item-input
+				span
+					i.icon.ion-android-person
+				input(type='email' ng-model='recover.forgotUser.email' placeholder='Correo' required)
+			button.primary-btn(type="submit" ng-disabled="recoverForm.$invalid || loading")
+				| Recuperar contraseña
+			p.clickable.link(ui-sref="login")
+				| ¿Tienes Cuenta? Ingresa acá.
+		.login-footer
+			p
+				| No tienes una cuenta, 
+				strong.clickable(ui-sref="register")  Registrate
+
+
+
+
+

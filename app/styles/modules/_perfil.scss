@@ -1,0 +1,59 @@
+.perfil-view{
+	top: 90px;
+	text-align: center;
+	h4{
+		font-family: 'Oswald', sans-serif;
+	}
+
+	.img-profile{
+		width: 100%;
+		img{
+			display: block;
+			margin: auto;
+		}
+	}
+	.show{
+		border: 0;
+		.item{
+			border: 0;
+			border-bottom: 2px solid $grey;
+		}
+	}
+
+	.font-large{
+		font-size: 38px;
+	}
+
+}
+
+canvas.image-preview {
+	background-color: transparent;
+	border: 0px;
+	margin: auto;
+	display: block;
+	height: 150px;
+	width: 150px;
+    border-radius: 100%;
+    &:hover{
+    	-webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+		-moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+		box-shadow: 3px 3px 3px 0 #e3e3e3;
+    }
+}
+
+#upload-input{
+	cursor: pointer;
+	position: absolute;
+	z-index: 9999;
+	top: -6px;
+	left: 36%;
+	opacity: 0;
+	height: 150px;
+	width: 150px;
+}
+
+.invisible-canvas{
+  position: absolute;
+  z-index: -1;
+  background: transparent;
+}

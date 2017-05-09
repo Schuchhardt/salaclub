@@ -1,0 +1,28 @@
+ion-view(hide-nav-bar='true')
+	ion-content.partidos-view
+		.map-container
+			leaflet(lf-center="santiago" layers="layers" markers="markers" height="300px" width="100%" defaults="options")
+		.row.next-matches
+			h2 Proximos Ensayos
+		.list
+			.item.askforlogin.text-center.clickable(ui-sref="login" ng-show="!partidos.proxPartidos")
+				span
+					strong Inicia sesión para poder registrar tus ensayos
+				span
+					small Podrás ver tus reservas y ensayos que sigas
+			.item.item-icon-left(ng-show="partidos.proxPartidos.length == 0")
+				span.icon.icon-futbol
+				span
+					strong No tienes ensayos en los proximos días
+				span
+					small Arrienda una sala y ponte a ensayar!
+			.item.item-icon-left.clickable(ng-repeat="partido in partidos.proxPartidos | orderBy: 'reservation.start_time': true" ng-click="partidos.goToPartido(partido)")
+				span.icon.icon-futbol
+				span
+					strong {{'Sala ' + partido.field.number}}, {{partido.reservation.start_time | date : "dd/MM/yyyy - HH:mm"}} hrs.
+				span
+					small {{partido.local.name}}, {{partidos.replaceMode(partido.field.mode)}}, {{partido.field.material}}
+				span.go
+					i.icon.ion-arrow-right-b
+		.spacer
+			br

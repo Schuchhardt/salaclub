@@ -1,0 +1,76 @@
+ion-view(hide-nav-bar="true")
+	.home-header
+		.title
+			.logo
+		button.back-button.force-show(ui-sref="perfil")
+			i.icon.ion-ios-arrow-thin-left
+	ion-content.register-view
+		div(ng-class="{'invisible-canvas': !perfil.newUserImage}" ng-thumb="perfil.newUserImage._file" height="160")
+		input(id="upload-input" type="file" nv-file-select="" uploader="perfil.uploader")
+		.img-profile(ng-hide="perfil.newUserImage")
+			img(ng-src="{{perfil.currentUser.img_thumb_url}}" err-src="../../../images/icon-person.png")
+			span.photo
+		h3 Editar Perfil
+		p.subtitle
+			small Datos Personales
+		form(name="updateForm" ng-submit="perfil.updateUser(perfil.currentUser, updateForm)" novalidate)
+			.list
+				.row
+					.col
+						.item.item-input.item-floating-label
+							span.input-label Ingresar Nombre
+							input(type="text" placeholder="Ingresar Nombre" ng-model="perfil.currentUser.name" required)
+					.col
+						.item.item-input.item-floating-label
+							span.input-label Ingresar Apellido
+							input(type="text" placeholder="Ingresar Apellido" ng-model="perfil.currentUser.last_name" required)
+				.row
+					.col
+						.item.item-input.item-floating-label
+							span.input-label Ingresar RUT
+							input(type="text" placeholder="Ingresar RUT" ng-model="perfil.currentUser.rut" ng-rut rut-format="blur" required)
+				.row
+					.col
+						.item.item-input.item-floating-label
+							span.input-label Ingresar Email
+							input(type="email" placeholder="Ingresar Email" ng-model="perfil.currentUser.email" required)
+					.col
+						.item.item-input.item-floating-label
+							span.input-label Ingresar Fono
+							input(type="tel" placeholder="Ingresar Fono" ng-model="perfil.currentUser.phone")
+				.row 
+					.col
+						.item.item-input.item-select
+							.input-label.clickable.dp-trigger(ng-click="perfil.openDatepicker()" ng-class="{'black': perfil.currentUser.birthday}")
+								| {{perfil.currentUser.birthday ? (perfil.currentUser.birthday | date: 'dd-MM-yyyy') : "Fecha de Nacimiento"}}
+					.col
+						.item.item-input.item-select
+							.input-label
+								| Genero
+							select(ng-model="perfil.currentUser.sex" ng-class="{'black': perfil.currentUser.sex}")
+								option(value="") Seleccione...
+								option(value="Masculino") Masculino
+								option(value="Femenino") Femenino
+				.row 
+					.col
+						.item.item-input.item-select
+							.input-label
+								| Region
+							select(ng-model="perfil.currentUser.region" ng-options="r as r.name for r in perfil.regions" ng-change="perfil.loadRegionDetail(perfil.currentUser.region)" ng-class="{'black': perfil.currentUser.region}" required)
+								option(value="") Seleccione...
+
+					.col
+						.item.item-input.item-select
+							.input-label
+								| Comuna
+							select(ng-model="perfil.currentUser.commune" ng-options="c as c.name for c in perfil.communes" ng-class="{'black': perfil.currentUser.commune}" required)
+								option(value="") Seleccione...
+			.list
+				.msg-error(ng-show="perfil.errorMessage.show")
+					p {{perfil.errorMessage.text}}
+			.perfil-footer
+				.row
+					button.primary-btn(type="submit")
+						| GUARDAR
+
+

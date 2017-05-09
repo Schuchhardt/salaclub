@@ -1,0 +1,24 @@
+form(role='form', name='reservationGuestForm', ng-submit='guest.enterAsGuest(guest.user, reservationGuestForm)', novalidate='novalidate')
+	.logo
+	p Para reservar como invitado debes ingresar la siguiente información
+	.list
+		.msg-error(ng-show="guest.errorMessage.show")
+			p {{guest.errorMessage.msg}}
+		.item.item-input(ng-class="{'input-error': reservationGuestForm.userName.$dirty && reservationGuestForm.userName.$invalid}")
+			span
+				i.icon.ion-android-person
+			input(type='text' ng-model='guest.user.name' minlength="4" placeholder='Nombre y Apellido' name="userName" required)
+		.item.item-input(ng-class="{'input-error': reservationGuestForm.userRut.$dirty && reservationGuestForm.userRut.$invalid}")
+			span
+				i.icon.ion-card
+			input(type='text' ng-model='guest.user.rut' placeholder='RUT' name="userRut" required ng-rut rut-format="blur")
+		.item.item-input(ng-class="{'input-error': reservationGuestForm.userEmail.$dirty && reservationGuestForm.userEmail.$invalid}")
+			span
+				i.icon.ion-ios-email-outline
+			input(type='email' ng-model='guest.user.email' placeholder='Correo' name="userEmail" required)
+		.item.item-input(ng-class="{'input-error': reservationGuestForm.userPhone.$dirty && reservationGuestForm.userPhone.$invalid}")
+			span
+				i.icon.ion-ios-telephone-outline
+			input(type='tel' ng-model='guest.user.phone' minlength="6" placeholder='Telefono' name="userPhone" required)
+		button.primary-btn(type="submit" ng-disabled="reservationGuestForm.$invalid || loading")
+			| Continuar como Invitado

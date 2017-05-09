@@ -1,0 +1,63 @@
+.btn-cancel{
+	width: 80%;
+	border: 2px solid $red;
+	color: $red;
+	display: block;
+	margin: auto;
+	height: 40px;
+	background: transparent;
+	border-radius: 35px;
+	text-transform: uppercase;
+	&.red-i{
+		border: 2px solid $red !important;
+		color: $red !important;
+	}
+}
+
+.btn-warning{
+	width: 80%;
+	border: 2px solid $purpleblue;
+	display: block;
+	margin: auto;
+	height: 40px;
+	background: transparent;
+	border-radius: 35px;
+	color: $dark;
+	text-transform: uppercase;
+}
+
+.primary-btn{
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+    display: block;
+    margin: auto;
+    background: $purpleblue;
+    width: 80%;
+    color: $white;
+    border-radius: 35px;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 20px;
+    border: 0;
+    max-width: 400px;
+	@include transition(all .3s linear);
+	&:hover{
+		border: 1px solid $purpleblue !important;
+		background-color: $dark;
+		color: $purpleblue;
+	}
+}
+
+.secondary-btn{
+	@extend .primary-btn;
+	background-color: transparent;
+	color: $dark;
+	border: 1px solid $purpleblue;
+	@include transition(all .3s linear);
+	&:hover{
+		border: 1px solid $black;
+		background-color: $purpleblue;
+		color: $dark;
+	}
+}

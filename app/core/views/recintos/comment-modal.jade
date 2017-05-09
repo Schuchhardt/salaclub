@@ -1,0 +1,28 @@
+ion-view(hide-nav-bar='true')
+	.home-header
+		.title
+			.logo
+		button.back-button.force-show(ng-click="closeCommentModal()")
+			i.icon.ion-android-close
+	ion-content.contact-view.in-modal.recinto-view
+		h3.text-center Nuevo Comentario
+		form(name="commentForm" ng-submit="createComment(newComment, commentForm)" novalidate)
+			.list
+				.message-alert(ng-if="alertMessage.show")
+					p
+						span
+							i.icon(ng-class="{'ion-android-alert': !alertMessage.isOk, 'ion-checkmark-circled': alertMessage.isOk}")
+					p {{alertMessage.text}}
+				.ranking
+					.stars
+						span(ng-repeat="r in [1,2,3,4,5]" ng-class="{'gold': r <= newComment.ranking}" ng-click="$parent.$parent.$parent.setRanking(r)")
+							i.icon.ion-android-star
+				.col
+					.item.item-input.item-floating-label(ng-class="{'has-error': hasError(commentForm.message), 'ok': isOk(commentForm.message)}")
+						span.input-label Ingresar Mensaje
+						textarea(name="message" placeholder="Ingresar Mensaje" ng-model="newComment.text" rows="4" required)
+			.perfil-footer
+				.row
+					button.primary-btn(type="submit")
+						| ENVIAR
+

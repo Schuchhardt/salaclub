@@ -1,0 +1,559 @@
+.arriendo-view{
+	top: 100px;
+	padding: 10px;
+    text-align: center;
+	@media(min-width: $tablet){
+		padding: 0 20%;
+	}
+    .head{
+    	text-transform: uppercase;
+    	p{
+		    text-align: center;
+    		color: $gray;
+		    font-weight: 700;
+		    font-size: 9px;
+		    margin-top: 10px;
+    	}
+    	.name{
+    		background-color: $purpleblue;
+    		p{
+    			color: $white;
+    			padding-left: 5px;
+    		}
+    	}
+    }
+    div{
+    	font-family: 'Montserrat', sans-serif;
+    }
+    .arrow-right {
+	  width: 0; 
+	  height: 0; 
+	  border-top: 20px solid transparent;
+	  border-bottom: 20px solid transparent;
+	  border-left: 20px solid $purpleblue;
+	}
+	.list{
+		margin-top: 20px;
+		.item{
+			p{
+				text-align: left;
+				text-transform: uppercase;
+				font-size: 11px;
+				font-weight: 700;
+			}
+			&.active{
+				background-color: $dark;
+				color: $white;
+				p{	
+					color: $white;
+				}
+			}
+		}
+		.tbk-img img{
+			display: block;
+			margin: auto;
+			height: 180px;
+		}
+		.totals{
+			p{
+				font-size: 13px;
+			}
+			.total p{
+				color: $black;
+			}
+		}
+	}
+	.steps{
+		margin-bottom: 20px;
+		padding: 0;
+		border: 1px solid $purpleblue;
+		.row{
+			padding:0;
+			background-color: $white;
+		}
+		.col{
+			pointer-events: none;
+			border-right: 1px solid $purpleblue;
+			padding: 12px 0px;
+			p{
+    			text-align: center;
+			}
+			&:last-child{
+				border-right: 0px;
+			}
+			&.current{
+				background-color: $whitesmoke;
+				p{
+					color: $black;
+				}
+			}
+			&.active{
+				pointer-events: all;
+				cursor: pointer;
+				background-color: $dark;
+				p{
+					color: $white;
+				}
+			}
+		}
+
+	}
+	.day-selected{
+		position: relative;
+    	width: 100%;
+	}
+	.calendar{
+		select{
+			font-family: 'Montserrat', sans-serif;
+    		font-size: 16px;
+		}
+		.box{
+			height: 50px;
+			border: 1px solid $grey;
+			p{
+				margin: 15px 0;
+				color: $dark;
+				font-weight: 700;
+			}
+			&.header{
+				p{
+					font-size: 19px;
+				    margin-top: 5px;
+				    margin-bottom: 0;
+				    
+				}
+				small{
+					color: $gray;
+					font-family: 'Montserrat', sans-serif;
+				}
+			}
+			&.selected{
+				background-color: $dark;
+				p{
+					color: $white;
+				}
+			}
+			&.disabled{
+				background-color: $grey;
+				cursor: not-allowed;
+			}
+		}
+		.dp-trigger{
+			display: block;
+    		width: 100%;
+    		max-width: inherit;
+    		font-size: 13px;
+		}
+		.arrow{
+			position: absolute;
+		    height: 250px;
+		    width: 32%;
+		    font-size: 41px;
+		    padding-top: 105px;
+		    background: rgba(255, 255, 255, 0.52);
+		    @include transition(all .6s);
+		    &.left{
+		    	left: 15px;
+		    	border-bottom-right-radius: 50%;
+		    	border-top-right-radius: 50%;
+		    }
+		    &.right{
+		    	right: 15px;
+		    	border-top-left-radius: 50%;
+		    	border-bottom-left-radius: 50%;
+		    }
+		    &:hover{
+		    	background: rgba(128, 128, 128, 0.48);
+		    	cursor: pointer;
+		    }
+		}
+	}
+	$canchaHeight: 105px;
+	.canchas{
+		.row{
+			padding: 20px 0;
+		}
+		.col{
+			margin: 0 1px; 
+		}
+		.cancha{
+			background-color: #da9d87;
+			border: 3px solid;
+			//background-image: url(../images/icon-cancha.png);
+			background-repeat: no-repeat;
+		    background-size: cover;
+		    height: $canchaHeight;
+		    width: 80px;
+		    margin: auto;
+		    display: block;
+		    border-radius: 5px;
+		    margin-bottom: 5px;
+		    @media(max-width: $iphone){
+		    	height: 75px;
+    			width: 60px;
+    			.mode{
+    				bottom: -42px;
+    			}
+    			.nro{
+					height: 26px;
+					width: 26px;
+					top: 35%;
+					padding: 3px;
+    			}
+		    }
+		    &.disabled{
+		    	.nro{
+		    		background-color: $dark-red;
+		    		font-size: 21px;
+		    	}
+		    }
+		    .light{
+				position: absolute;
+				color: #FFEB3B;
+				font-size: 31px;
+				margin-left: -24px;
+				margin-top: -43px;
+				background: black;
+				padding: 6px;
+				border-radius: 100%;
+		    }
+		    .roof{
+				position: absolute;
+				font-size: 30px;
+				margin-top: -29px;
+				margin-left: 10px;
+		    }
+		}
+
+		$nroCircle: 30px;
+		.nro{
+			background-color: $dark;
+			height: $nroCircle;
+			width: $nroCircle;
+			border-radius: 100%;
+			display: block;
+			margin: auto;
+			position: relative;
+			top: 34%;
+			color: white;
+			font-weight: 700;
+			padding: 5px;
+		}
+		.mode{
+		    position: relative;
+		    bottom: -65px;
+		    background: $grey;
+		    width: 45px;
+		    display: block;
+		    margin: auto;
+		    border-radius: 9px;
+		    font-size: 15px;
+		    font-family: 'Montserrat', sans-serif;
+		}
+		.check{
+		    width: 30px;
+		    background: $grey;
+		    height: 30px;
+		    position: absolute;
+		    margin-left: 45px;
+		    margin-top: -10px;
+		    border-radius: 100%;
+		    padding: 5px;
+		    font-size: 20px;
+		    color: $green;
+		}
+		.overlay{
+		    position: absolute;
+		    height: $canchaHeight;
+		    width: 23%;
+		    .shadow{
+		    	background-color: rgba(6, 6, 6, 0.61);
+				width: 80px;
+				height:  $canchaHeight;
+				display: block;
+				margin: auto;
+				@media(max-width: $iphone){
+					width: 60px;
+					margin-left: 0px;
+					height: 80px;
+				}
+		    }
+		}
+	}
+	.adicionales{
+		margin: 15px 0;
+    	padding: 0;
+    	.item{
+    		border: 0;
+    		border-bottom: 1px solid $grey;
+    		.item-content{
+    			span{
+				    font-size: 14px;
+				    text-align: left;
+				    width: 100%;
+				    display: block;
+				    font-weight: 700;
+    			}
+    			small{
+    				display: inherit;
+    				text-align: left;
+    				font-family: 'Montserrat', sans-serif;
+    			}
+    		}
+    		.item-checkbox{
+    			.checkbox-icon{
+    				&:before{
+    					border-color: $gray;
+    				}
+    			}
+    		}
+    		&.item-floating-label{
+    			width: 100%;
+    			span{
+    				font-size: 14px;
+    			}
+    			input{
+    				padding: 0;
+    			}
+    		}
+    	}
+    	.active{
+    		.item{
+    			border-bottom: 1px solid $purpleblue;
+    		}
+    	}
+    	input{
+    		font-family: 'Montserrat', sans-serif;
+    	}
+	}
+	.resumen{
+		background-color: $grey;
+		margin: 0;
+		padding: 0px 5px;
+		@media(max-width: $iphone6-plus){
+			padding: 5px 0;
+			.row{
+				display: block !important;
+				&.ng-hide{
+					display: none !important;
+				}
+			}
+		}
+		.item-avatar{
+			border: 0;
+			border-radius: 0;
+    		text-align: left;
+		    padding-right: 0;
+		    padding-left: 60px;
+		    background-color: $grey;
+    		h2{
+    			text-transform: uppercase;
+				font-size: 11px;
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 700;
+				color: $dark;
+    		}
+    		p{
+    			font-size: 11px;
+				font-weight: 700;
+				color: $gray;
+    		}
+    		img{
+			    max-width: none;
+			    max-height: 30px;
+			    border-radius: 0;
+			    width: auto;
+    		}
+		}
+		.col{
+			padding: 0;
+		}
+		.row{
+			margin-top: 0px;
+			border-bottom: 3px solid darken($grey, 5%);
+			padding: 0;
+			&:last-child{
+				border-bottom: 2px solid darken($grey, 5%);
+			}
+		}
+	}
+	.metodos{
+		background-color: $grey;
+	    margin: 0;
+	    padding: 20px 10px 30px 10px;
+	    .no-schedules{
+			width: 100%;
+			text-transform: uppercase;
+			font-size: 13px;
+	    }
+	    .item{
+	    	width: 100%;
+	    	border: 0;
+	    	text-align: left;
+		    border-radius: 0;
+		    margin: 0;
+	    }
+	    .item-content{
+	    	background-color: $grey;
+	    }
+	    .options{
+	    	max-height: 350px;
+    		overflow-y: auto;
+	    	.row{
+				border-bottom: 2px solid darken($grey, 5%);
+				margin-top: 0;
+				padding: 0 5px;
+	    	}
+	    	span{
+	    		font-size: 13px;
+	    		font-weight: 700;
+	    		margin-left: 10px;
+	    	}
+	    	small{
+	    		font-size: 13px;
+	    	    font-family: 'Montserrat', sans-serif;
+	    	    @media(max-width: $iphone){
+	    	    	display: block;
+    				text-align: end;
+    				&.not{
+    					text-align: center;
+    					display: initial;
+    				}
+	    	    }
+	    	}
+	    	.item-content{
+	    		padding-left: 5px;
+	    	}
+    		.radio-icon{
+    			background-color: $white;
+			    visibility: visible;
+			    border-radius: 100%;
+			    border: 1px solid;
+			    height: 20px;
+			    width: 20px;
+			    margin-top: 11px;
+			    margin-right: 20px;
+			    &:before{
+					position: relative;
+					top: -10px;
+					left: -7px;
+					font-size: 19px;
+					display: none;
+			    }
+    		}
+    		.option-selected{
+    			.radio-icon:before{
+    				display: block;
+    			}
+    		}
+
+    		.item-radio input:checked + .radio-content .item-content {
+  				background: $black;
+  				color: $white;
+			}
+	    }
+	}
+
+}
+
+.resumen-view{
+	background-color: $whitesmoke;
+	padding: 0 10px !important;
+	@media(min-width: $tablet){
+		padding: 0 20% !important;
+	}
+	.list{
+		margin-top: 0 !important;
+		.resumen{
+			padding: 0;
+		}
+	}
+	.header{
+	    background-color: $white;
+    	margin: 0px;
+    	margin-top: 10px;
+		.item{
+			border:0;
+			padding: 10px;
+			p{
+				text-align: center;
+				text-transform: inherit;
+				color: $gray;
+				font-size: 10px;
+				font-weight: 300;
+				&.green{
+					font-size: 12px;
+					color: $success-green;
+					text-transform: uppercase;
+					font-weight: 700;
+					@media(max-width: $iphone6){
+						font-size: 10px;
+					}
+				}
+				&.title{
+					color: $dark;
+			    	font-size: 15px;
+			    	font-weight: 700;
+			    	margin-top: 10px;
+				}
+			}
+		}
+		hr{
+			border-color: $whitesmoke;
+    		opacity: 0.5;
+		}
+	}
+	.row .col .item-avatar{
+		background-color: $white;
+	}
+	.list-inset{
+		background: transparent;
+	}
+	.short{
+		text-transform: uppercase;
+		font-size: 11px;
+    	text-align: left;
+    	color: $gray;
+    	font-weight: 700;
+	}
+	.share{
+		span{
+			height: 30px;
+			width: 30px;
+			display: inline-block;
+			font-size: 30px;
+			margin: 0 5px;
+			float: left;
+		}
+		.btn{
+			font-size: 30px;
+			background: transparent;
+			border: 0;
+			margin: 0;
+			float: left;
+		}
+		.tooltip{
+			position: absolute;
+			margin-top: 30px;
+			background: $black;
+			border-radius: 10px;
+			color: white;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 10px;
+			padding: 5px;
+			border-top-left-radius: 1px;
+			margin-left: 15px;
+		}
+	}
+}
+
+.reservation-not-available{
+	.popup-title{
+		font-size: 18px;
+	}
+	.popup-body{
+		text-align: center;
+	}
+}
+

@@ -1,0 +1,109 @@
+.micuenta-view{
+	@media(min-width: $tablet){
+		padding: 0 20%;
+	}
+	.stadium-bar{
+		background-image: url(../images/recintoExample.png);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: bottom;
+		width: 100%;
+		background-position-y: -340px;
+		height: 120px;
+		background-color: $light-cyan;
+	}
+	.img-profile{
+		position: absolute;
+		width: 100%;
+		top: 60px;
+		img{
+		    display: block;
+		    margin: auto;
+		    border: 5px solid $white;
+		    border-radius: 100%;
+		    max-width: 100px;
+    		background-color: $white;
+		}
+	}
+	.list{
+	    position: relative;
+	    top: 60px;
+	    .item{
+		    border: 0;
+		    text-align: center;
+		    p{
+				font-size: 13px;
+				font-weight: bolder;
+		    }
+	    }
+	    .divider{
+			width: 30px;
+			display: block;
+			margin: auto;
+			background: $purpleblue;
+			height: 3px;
+	    }
+	}
+	.perfil-footer{
+    	margin-top: 20%;
+    	p{
+    		text-align: center;
+		    font-size: 10px;
+		    width: 100%;
+		    margin-top: 20px;
+    	}
+	}
+}
+
+.terminos-view{
+	top: 90px;
+    text-align: center;
+    padding: 40px;
+    h3, p{
+    	color: $dark;
+    }
+}
+
+.contact-view{
+	margin-top: 100px;
+	.list{
+		max-width: 300px;
+    	margin: auto;
+    	.item-floating-label{
+    		border: 0;
+    		input, textarea{
+    			font-size: 16px; 
+    			border-bottom: 1px solid;
+    			&::-webkit-input-placeholder {
+	    			color: $black;
+	    		}
+	    	}
+    	}
+    	span.has-input{
+    		font-family: 'Oswald', sans-serif;
+    	}
+    	.item.has-error{
+			border: 1px solid $red;
+    	}
+    	.item.ok{
+    		input, textarea{
+    			border-bottom: 1px solid $success-green;	
+    		}
+			
+    	}
+    	.message-alert{
+    		width: 100%;
+			position: absolute;
+			height: 320px;
+			background: $black;
+			color: $white;
+			text-align: center;
+			padding: 90px 30px;
+			z-index: 999;
+			opacity: 0.8;
+			i{
+				font-size: 50px;
+			}
+    	}
+	}
+}

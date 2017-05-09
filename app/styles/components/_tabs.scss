@@ -1,0 +1,54 @@
+//components/_inputs.scss
+// ******* ******* ******* ******* 
+// Special input Component
+
+$tab-height: 90px;
+
+.home-tabs{
+	.tabs{
+		top: $tab-height !important;
+		background-color: $white;
+		width: 100%;
+    	margin: 0 auto;
+    	@media(min-width: $tablet){
+    	    width: 60%;
+    		margin-left: 20%;
+    	}
+	}
+	a{
+		span.tab-title{
+			position: relative;
+			top: 11px;
+			padding-bottom: 20px;
+			text-transform: uppercase;
+			font-weight: bolder;
+			font-size: 12px;
+			
+		}
+		&.tab-item-active{
+			span{
+				color: $black;
+				border-bottom: 4px solid $purpleblue;
+			}
+		}
+		
+	}	
+}
+
+.home-header{
+	height: $tab-height;
+
+	.logo{
+		position: relative;
+		top: 30px;
+		background-image: url(../images/barlogo.png);
+		height: 50px;
+		width: 35%;
+		display: block;
+		margin: auto;
+	    background-size: contain;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	}
+
+}

@@ -1,0 +1,29 @@
+{
+    "extends": "airbnb/base",
+    "globals": {
+      "angular": 1,
+      "_": 1,
+      "cordova": 1,
+      "window": 1,
+      "ionic": 1,
+      "__API__": 1
+    },
+    "rules": {
+      "no-var": 0,
+      "strict": 0,
+      "func-names": 0,
+      "padded-blocks": 0,
+      "one-var": 0,
+      "comma-dangle": 0,
+      "quotes": 0,
+      "no-console": 0,
+      "indent": 0,
+      "space-before-function-paren": 0,
+      "vars-on-top": 0,
+      "radix": 0,
+      "default-case": 0,
+      "no-nested-ternary": 1,
+      "id-length": 0,
+      "no-trailing-spaces": 0
+    }
+}

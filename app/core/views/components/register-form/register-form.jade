@@ -1,0 +1,80 @@
+.register-view
+	div(ng-class="{'invisible-canvas': !register.newUserImage}" ng-thumb="register.newUserImage._file" height="160")
+	input(id="upload-input" type="file" nv-file-select="" uploader="register.uploader")
+	.img-profile(ng-hide="register.newUserImage")
+		img(src="../../../../images/icon-person.png")
+		span.photo
+	h3 Crear cuenta
+	p.subtitle
+		small Datos Personales
+	form(name="registerForm" ng-submit="register.createUser(register.newUser, registerForm)" novalidate)
+		.list
+			.row
+				.col
+					.item.item-input.item-floating-label
+						span.input-label Ingresar Nombre
+						input(type="text" placeholder="Ingresar Nombre" ng-model="register.newUser.name" required)
+				.col
+					.item.item-input.item-floating-label
+						span.input-label Ingresar Apellido
+						input(type="text" placeholder="Ingresar Apellido" ng-model="register.newUser.last_name" required)
+			.row
+				.col
+					.item.item-input.item-floating-label
+						span.input-label Ingresar RUT
+						input(type="text" placeholder="Ingresar RUT" ng-model="register.newUser.rut" ng-rut rut-format="blur" required)
+			.row
+				.col
+					.item.item-input.item-floating-label
+						span.input-label Ingresar Email
+						input(type="email" placeholder="Ingresar Email" ng-model="register.newUser.email" required)
+				.col
+					.item.item-input.item-floating-label
+						span.input-label Ingresar Fono
+						input(type="tel" placeholder="Ingresar Fono" ng-model="register.newUser.phone")
+			.row 
+				.col
+					.item.item-input.item-select
+						.input-label.clickable.dp-trigger(ng-click="register.openDatepicker()" ng-class="{'black': register.newUser.birthday}")
+							| {{register.newUser.birthday ? (register.newUser.birthday | date: 'dd-MM-yyyy') : "Fecha de Nacimiento"}}
+				.col
+					.item.item-input.item-select
+						.input-label
+							| Genero
+						select(ng-model="register.newUser.sex" ng-class="{'black': register.newUser.sex}")
+							option(value="") Seleccione...
+							option(value="Masculino") Masculino
+							option(value="Femenino") Femenino
+			.row 
+				.col
+					.item.item-input.item-select
+						.input-label
+							| Region
+						select(ng-model="register.newUser.region" ng-options="r.id as r.name for r in register.regions" ng-change="register.loadRegionDetail(register.newUser.region)" ng-class="{'black': register.newUser.region}" required)
+							option(value="") Seleccione...
+				.col
+					.item.item-input.item-select
+						.input-label
+							| Comuna
+						select(ng-model="register.newUser.commune" ng-options="c.id as c.name for c in register.communes" ng-class="{'black': register.newUser.commune}" required)
+							option(value="") Seleccione...
+		p.subtitle
+			small Crea una contraseña
+		.list
+			.msg-error(ng-show="register.errorMessage.show")
+				p {{register.errorMessage.text}}
+			.row
+				.col
+					.item.item-input.item-floating-label
+						span.input-label Ingresar una Contraseña
+						input(type="password" ng-model="register.newUser.password" placeholder="Ingresar una Contraseña" minlength="6" required)
+				.col
+					.item.item-input.item-floating-label
+						span.input-label Confirmar Contraseña
+						input(type="password" ng-model="register.newUser.password2" placeholder="Confirmar Contraseña" minlength="6" required)
+		.perfil-footer
+			.row
+				button.primary-btn(type="submit")
+					| CREAR
+
+

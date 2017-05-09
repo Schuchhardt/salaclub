@@ -1,0 +1,10 @@
+bower_components
+node_modules
+debug.log
+npm-debug.log
+build
+docs
+.DS_Store
+.idea
+.vscode
+.env

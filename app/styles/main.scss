@@ -1,0 +1,27 @@
+@charset "UTF-8";
+// Styles
+// ******** ******** ******** ********
+
+// Utilities
+@import "./utilities/_functions.scss";
+@import "./utilities/_config.scss";
+@import "./utilities/_helpers.scss";
+
+// Base
+@import "./base/_base.scss";
+@import "./base/_fonts.scss";
+
+// Components
+@import "./components/_datepicker.scss";
+@import "./components/_tabs.scss";
+@import "./components/_buttons.scss";
+
+// Modules
+@import "./modules/_login.scss";
+@import "./modules/_register.scss";
+@import "./modules/_partidos.scss";
+@import "./modules/_recintos.scss";
+@import "./modules/_arriendo.scss";
+@import "./modules/_micuenta.scss";
+@import "./modules/_perfil.scss";
+

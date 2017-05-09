@@ -1,0 +1,31 @@
+ion-view(hide-nav-bar="true")
+	.home-header
+		.title
+			.logo
+		button.back-button.force-show(ui-sref="home.micuenta")
+			i.icon.ion-ios-arrow-thin-left
+	ion-content.perfil-view
+		.img-profile
+			img.circled(ng-src="{{perfil.user.img_thumb_url}}" err-src="../../../images/icon-futbol.png")
+		h3 Mi Perfil
+		p
+			small Datos Personales
+		.list.show
+			.item(ng-if="perfil.user.sex")
+				p 
+					span.font-large
+						i.icon(ng-class="{'ion-male': perfil.user.sex == 'Masculino', 'ion-female': perfil.user.sex == 'Femenino'}")
+			.item(ng-if="perfil.user.name")
+				p {{perfil.user.name}} {{perfil.user.last_name}}
+			.item(ng-if="perfil.user.birthday")
+				p {{perfil.user.birthday}}
+			.item(ng-if="perfil.user.commune_name")
+				p {{perfil.user.commune_name}}
+			.item(ng-if="perfil.user.region_name")
+				p {{perfil.user.region_name}}
+		.perfil-footer
+			.row
+				button.btn-warning(ng-click="perfil.goEditProfile()")
+					| Editar mi perfil
+
+

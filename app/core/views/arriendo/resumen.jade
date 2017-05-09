@@ -1,0 +1,81 @@
+ion-view(hide-nav-bar="true")
+	.home-header
+		.title
+			.logo
+	ion-content.arriendo-view.resumen-view
+		.list
+			.header
+				.item
+					p.text-center.title(ng-hide="resumen.isSuccess") RESUMEN
+					p.text-center.green(ng-show="resumen.isSuccess") GRACIAS! SU RESERVA FUE INGRESADA CON ÉXITO.
+				hr
+				.item
+					p.text-center(ng-show="resumen.isSuccess") Una copia de este resumen fue enviado a su correo.
+			.list-inset.resumen
+				.row
+					.col
+						.item.item-avatar
+							img(src="../../../images/icon-calendario.png")
+							h2 {{resumen.reservation.start_time| date: 'EEEE, dd-MM-yyyy'}}
+							p {{resumen.reservation.start_time | date: 'HH:mm'}}
+					.col
+						.item.item-avatar
+							img(src="../../../images/icon-futbol.png")
+							h2 Sala {{resumen.field.number}}
+							p {{resumen.field.mode}}
+				.row
+					.col
+						.item.item-avatar
+							img(src="../../../images/icon-map-marker.png")
+							h2 {{resumen.local.street_name}} {{resumen.local.street_number}}, {{resumen.local.commune_name}}
+							p {{resumen.local.name}}
+				.row
+					.col
+						.item.item-avatar
+							img(src="../../../images/pesos.png")
+							h2 {{resumen.reservation.price | currency: $:0}}
+							p 
+								span(ng-show="resumen.reservation.reservation_method == 1") VALOR DEL ARRIENDO
+								span(ng-show="resumen.reservation.reservation_method == 2") (50% ABONADO) RESERVA
+								span(ng-show="resumen.reservation.reservation_method == 3") PAGO EN SALA
+				.row(ng-if="resumen.reservation.extras_detail")
+					.col
+						.item.item-avatar
+							img(src="../../../images/icon-futbol.png")
+							h2 Extras
+							p {{resumen.reservation.extras_name}}
+				.row
+					.col
+						.item.item-avatar
+							img(src="../../../images/icon-persona.png")
+							h2 {{resumen.reservation.user_name}}
+							p {{resumen.currentUser.phone}}
+			.list-inset
+				.row
+					.col-50
+						p.short Compartir
+					.col-25
+						p.short Link
+					.col-25
+						p.short Enviar
+				.row.share
+					.col-50
+						span.clickable(ng-click="resumen.postTo(1)")
+							i.icon.ion-social-facebook-outline
+						span.clickable(ng-click="resumen.postTo(2)")
+							i.icon.ion-social-twitter-outline
+						span.clickable(ng-click="resumen.postTo(3)")
+							i.icon.ion-social-googleplus-outline
+						span.clickable(ng-click="resumen.postTo(5)" ng-show="resumen.isMobile")
+							i.icon.ion-social-whatsapp-outline
+					.col-25
+						button(class="btn" ngclipboard data-clipboard-text="{{resumen.shareUrl}}" ng-click="resumen.copyLink()")
+							i.icon.ion-link
+						p.tooltip(ng-show="resumen.showTooltip") LINK COPIADO!
+					.col-25
+						span.clickable(ng-click="resumen.postTo(4)")
+							i.icon.ion-share
+			.perfil-footer
+				.row
+					button.secondary-btn(ng-click="resumen.goToMatch()")
+						| IR AL ENSAYO

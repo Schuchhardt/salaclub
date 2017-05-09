@@ -1,0 +1,114 @@
+//utilities/_helpers.scss
+
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+// .ng-invalid.ng-dirty{
+//   border-color: $pink-red !important;
+// }
+// .ng-valid.ng-dirty {
+//   border-color: $red !important;
+// }
+
+.appear {
+  @include transition(all linear 0.5s);
+  &.ng-hide {
+    opacity:0;
+  }
+}
+
+.appear-left {
+  @include transition(all linear 0.5s);
+  &.ng-hide {
+    left:0;
+  }
+}
+
+.force-show{
+	display: block !important;
+}
+
+.back-button{
+    height: 70px;
+    width: 70px;
+    position: relative;
+    bottom: 30px;
+    font-size: 40px;
+    background: transparent;
+    border: 0;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.capitalized{
+  text-transform: capitalize;
+}
+
+.circled{
+  border-radius: 100%;
+}
+
+.spacer{
+  height: 100px;
+}
+
+.loading-futbol{
+  .icon-futbol{
+    height: 50px;
+    width: 50px;
+    display: block;
+    background-image: url(../images/icon-futbol.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.spin{
+  @include animation(spin 1.3s infinite linear)
+}
+
+// Override
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.platform-browser{
+    .scroll-content{
+      overflow-y: auto !important;
+    }
+}
+
+.list{
+  .item.clickable{
+    @include transition(all .3s linear);
+    &:hover{
+      background-color: $gray;
+      color: $white;
+      p,h2, strong{
+        color: $white;
+      }
+    }
+  }
+}
+
+
+@media (min-width: $tablet){
+  .modal-open{
+    .modal { 
+      min-height: 100%;
+    }    
+  }
+}

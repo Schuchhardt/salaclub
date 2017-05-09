@@ -1,0 +1,162 @@
+ion-view(hide-nav-bar="true")
+	.home-header
+		.title
+			.logo
+		button.back-button.force-show(ng-click="arriendo.goBack('recinto')")
+			i.icon.ion-ios-arrow-thin-left
+	ion-content.arriendo-view
+		.row.head
+			.col-33
+				p Disponibilidad:
+			.col-60.name
+				p {{arriendo.currentRecinto.name}}
+			.arrow-right
+		.list
+			.item.steps
+				.row
+					.col.col-25(ng-click="arriendo.setCurrentStep(1)" ng-class="{'active': arriendo.selectedDate && arriendo.currentStep > 1, 'current': arriendo.currentStep == 1}")
+						p {{arriendo.selectedDate ? (arriendo.selectedDate | date: 'dd-MM-yyyy') : 'Día'}}
+					.col.col-25(ng-click="arriendo.setCurrentStep(2)" ng-class="{'active': arriendo.selectedHour && arriendo.currentStep > 2, 'current': arriendo.currentStep == 2}")
+						p {{arriendo.selectedHour ? arriendo.selectedHour.inicio : 'Hora'}}
+					.col.col-25(ng-click="arriendo.setCurrentStep(3)" ng-class="{'active': arriendo.selectedField && arriendo.currentStep > 3, 'current': arriendo.currentStep == 3}")
+						p {{arriendo.selectedField ? arriendo.selectedField.number : 'Sala'}}
+					.col.col-25(ng-click="arriendo.setCurrentStep(4)" ng-class="{'active': arriendo.selectedPrice && arriendo.currentStep > 4, 'current': arriendo.currentStep == 4}")
+						p {{arriendo.selectedPrice ? (arriendo.selectedPrice | currency:$:0) : 'Precio'}}
+			.step.step1(ng-show="arriendo.currentStep == 1")
+				.item.item-icon-right.clickable.active
+					p Seleccione Dia:
+				.list-inset.calendar
+					.row
+						.col
+							.item.item-input.item-select.clickable(ng-click="arriendo.openDatepicker()")
+								.input-label.dp-trigger.capitalized
+									| {{arriendo.selectedDate ? (arriendo.selectedDate | date: 'EEEE, dd-MM-yyyy') : "Haz click para escoger"}}
+					.row(ng-show="arriendo.selectedDate")
+						button.primary-btn(ng-click="arriendo.setCurrentStep(2)" ) SIGUIENTE
+			.step.step2(ng-show="arriendo.currentStep == 2")
+				.item.item-icon-right.clickable.active
+					p Seleccione Hora:
+				.list-inset.metodos
+					.options
+						div(ng-show="arriendo.horas == false")
+								p.no-schedules Este Recinto no cuenta con horarios disponibles para ese día.
+								button.primary-btn(ng-click="arriendo.openDatepicker()") Intentar con otro día
+						.row(ng-repeat="hora in arriendo.horas" ng-class="{'option-selected': hora.inicio == arriendo.selectedHour.inicio}")
+							ion-radio(ng-model="arriendo.selectedHour" ng-value="hora")
+								| {{hora.inicio}} a {{hora.termino}} hrs.
+					.row
+						button.primary-btn(ng-click="arriendo.setCurrentStep(3)" ng-show="arriendo.selectedHour") SIGUIENTE
+					.spacer
+			.step.step3(ng-show="arriendo.currentStep == 3")
+				.item.item-icon-right.clickable.active
+					p Seleccione Sala:
+				.list-inset.canchas
+					.row(ng-repeat="fields in arriendo.selectedHour.fields")
+						.col.col-25(ng-repeat="field in fields")
+							.overlay(ng-show="field.id == arriendo.selectedField.id")
+								.shadow
+							.cancha.clickable(ng-class="{'disabled': field.disabled, 'selected': field.id == arriendo.selectedField.id}" ng-click="arriendo.selectField(field)")
+								.check(ng-show="field.id == arriendo.selectedField.id")
+									i.icon.ion-checkmark
+								//- span(ng-if="field.light").light
+								//- 	i.icon.ion.ion-ios-lightbulb
+								//- span(ng-if="field.roof").roof
+								//- 	i.icon.ion.ion-ios-drag
+								.nro
+									p(ng-if="!field.disabled") {{field.number}}
+									p(ng-if="field.disabled")
+										i.icon.ion-minus
+								//- .mode
+								//- 	small {{ arriendo.replaceMode(field.mode)}}
+					.row
+						button.primary-btn(ng-click="arriendo.setCurrentStep(4)" ng-show="arriendo.selectedField") SIGUIENTE
+			.step.step4(ng-show="arriendo.currentStep == 4")
+				.item.item-icon-right.clickable(ng-click="arriendo.setCurrentItem(1)" ng-class="{'active': arriendo.currentItem == 1}")
+					p RESUMEN
+					span
+						i.icon(ng-class="{'ion-android-arrow-dropup': arriendo.currentItem == 1, 'ion-android-arrow-dropdown':arriendo.currentItem !== 1}")
+				.list-inset.resumen(ng-show="arriendo.currentItem == 1")
+					.row
+						.col
+							.item.item-avatar
+								img(src="../../../images/icon-calendario.png")
+								h2 {{arriendo.selectedDate | date: 'EEEE, dd-MM-yyyy'}}
+								p {{arriendo.selectedHour.inicio}} a {{arriendo.selectedHour.termino}}
+						.col
+							.item.item-avatar
+								img(src="../../../images/icon-futbol.png")
+								h2 Sala {{arriendo.selectedField.number}}
+								p {{arriendo.selectedField.mode}}
+					.row
+						.col
+							.item.item-avatar
+								img(src="../../../images/icon-map-marker.png")
+								h2 {{arriendo.currentRecinto.street_name}} {{arriendo.currentRecinto.street_number}}, {{arriendo.currentRecinto.commune_name}}
+								p {{arriendo.currentRecinto.name}}
+					.row
+						.col
+							.item.item-avatar
+								img(src="../../../images/pesos.png")
+								h2 {{arriendo.selectedPrice | currency: $:0}}
+								p VALOR DEL ARRIENDO
+					.row(ng-show="arriendo.currentUser")
+						.col
+							.item.item-avatar
+								img(src="../../../images/icon-persona.png")
+								h2 {{arriendo.currentUser.name}} {{arriendo.currentUser.last_name}}
+								p {{arriendo.currentUser.phone}}
+				.item.item-icon-right.clickable(ng-click="arriendo.setCurrentItem(2)" ng-class="{'active': arriendo.currentItem == 2}" ng-hide="arriendo.extras.length == 0")
+					p Seleccione algún adicional
+					span
+						i.icon(ng-class="{'ion-android-arrow-dropup': arriendo.currentItem == 2, 'ion-android-arrow-dropdown':arriendo.currentItem !== 2}")
+				.list-inset.adicionales(ng-show="arriendo.currentItem == 2")
+					.row(ng-repeat="extra in arriendo.extras")
+						.col(ng-class="{'active': extra.selected}")
+							ion-checkbox(ng-model="extra.selected")
+								| {{extra.name}}
+								small 
+									| {{extra.price | currency:$:0}}
+					.row
+						.item.item-input.item-floating-label
+							span.input-label Comentario para el administrador del recinto
+							input(type="text" placeholder="Comentario para el administrador del recinto" ng-model="arriendo.reserveComment")
+				.item.item-icon-right.clickable(ng-click="arriendo.setCurrentItem(3)" ng-class="{'active': arriendo.currentItem == 3}")
+					p Seleccionar Método de pago
+					span
+						i.icon(ng-class="{'ion-android-arrow-dropup': arriendo.currentItem == 3, 'ion-android-arrow-dropdown':arriendo.currentItem !== 3}")
+				.list-inset.metodos
+					.options
+						.row(ng-class="{'option-selected': arriendo.paymentMethod == 1}" ng-show="arriendo.currentRecinto.online_payments")
+							ion-radio(ng-model="arriendo.paymentMethod" ng-value="1")
+								| Pagar online /
+								small.not 
+									| Arriendo
+						.row(ng-class="{'option-selected': arriendo.paymentMethod == 2}" ng-show="arriendo.currentRecinto.online_payments")
+							ion-radio(ng-model="arriendo.paymentMethod" ng-value="2")
+								| Pagar online 50% /
+								small 
+									| Reservar la cancha
+						.row(ng-class="{'option-selected': arriendo.paymentMethod == 3}" ng-show="arriendo.currentRecinto.local_payments")
+							ion-radio(ng-model="arriendo.paymentMethod" ng-value="3")
+								| Pagar en efectivo /
+								small 
+									| En la cancha
+				.totals
+					.row
+						.col.item
+							p Subtotal: {{arriendo.subtotal() | currency:$:0}}
+					.row
+						.col.item
+							p Recargo: {{arriendo.recargo( arriendo.subtotal() ) | currency:$:0}}
+					.row
+						.col.item.total
+							p Total a Pagar: {{( ( arriendo.subtotal() ) + ( arriendo.recargo() ) ) | currency:$:0}}
+				.row(ng-show="arriendo.paymentMethod")
+					button.primary-btn( ng-click="arriendo.goToPay()") {{arriendo.paymentMethod == 3 ? 'RESERVAR' : 'IR A PAGAR'}}
+				.row(ng-show="arriendo.paymentMethod")
+					.col.tbk-img(ng-show="arriendo.paymentMethod !== 3")
+						img(src="../../../images/tbk.jpg")
+	script(id="auth-modal.html" type="text/ng-template")
+		ion-modal-view
+			include ../common/auth-modal
+

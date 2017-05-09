@@ -1,0 +1,24 @@
+.home-header
+	.title
+		.logo
+	button.back-button.force-show(ng-click="auth.closeModal()")
+		i.icon.ion-android-close
+ion-content.login-view.in-modal
+	div(ng-show="auth.activeModule == 'login'")
+		login-form
+	div(ng-show="auth.activeModule == 'register'")
+		register-form
+	div(ng-show="auth.activeModule == 'reservation-guest'")
+		reservation-guest
+	div(ng-show="auth.activeModule == 'recover'")
+		recover-form
+	.login-footer
+		p(ng-show="auth.login && auth.activeModule != 'login'")
+			| Ya tienes cuenta, 
+			strong.clickable(ng-click="auth.setActiveModule('login')")  Inicia Sesión
+		p(ng-show="auth.register && auth.activeModule != 'register'")
+			| No tienes una cuenta, 
+			strong.clickable(ng-click="auth.setActiveModule('register')")  Regístrate
+		p(ng-show="auth.enterAsGuest && auth.activeModule != 'reservation-guest'")
+			| ó
+			strong.clickable(ng-click="auth.setActiveModule('reservation-guest')")  Reserva como Invitado
