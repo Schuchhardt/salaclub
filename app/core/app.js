@@ -29,9 +29,9 @@ ngModule.run(($ionicPlatform, CONFIG) => {
 			window.StatusBar.styleDefault();
 		}
 	});
-	if (CONFIG.devEnv === false && location.protocol !== 'https:' && window.location.host === 'ensayapp.cl') {
-		location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-	}
+	// if (CONFIG.devEnv === false && location.protocol !== 'https:' && window.location.host === 'ensayapp.cl') {
+	// 	location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+	// }
 });
 
 ngModule.config( ($ionicConfigProvider, ionicDatePickerProvider, $logProvider) => {
