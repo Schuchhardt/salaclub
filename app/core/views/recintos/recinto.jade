@@ -13,7 +13,7 @@ ion-view(hide-nav-bar="true")
 				h3 {{recinto.currentRecinto.name}}
 			.row.btn-row(ng-show="recinto.fields.length !== 0 && (recinto.currentRecinto.online_payments == true || recinto.currentRecinto.local_payments == true) ")
 				button.primary-btn(ng-click="recinto.goToRent()")
-					| Arrendar Cancha
+					| Arrendar Sala
 			.row
 				p Valoración
 			.row.ranking
@@ -97,26 +97,26 @@ ion-view(hide-nav-bar="true")
 				.row
 					.col
 						p 
-							| Los Horarios pueden variar según cancha
+							| Los Horarios pueden variar según Sala
 				.row(ng-hide="recinto.fields.length == 0")
 					button.secondary-btn(ng-click="recinto.goToRent()")
-						| Arrendar Cancha
+						| Arrendar Sala
 
 			.item.item-icon-right.clickable(ng-class="{'active': recinto.currentItem == 3}" ng-click="recinto.setCurrentItem(3)" ng-hide="recinto.fields.length == 0")
-				p Canchas
+				p Salas
 				span
 					i.icon(ng-class="{'ion-android-arrow-dropup': recinto.currentItem == 3, 'ion-android-arrow-dropdown': recinto.currentItem !== 3}")
 			.list-inset.canchas(ng-show="recinto.currentItem == 3")
 				.item(ng-repeat="cancha in recinto.fields")
-					p Cancha {{cancha.number}} - {{cancha.material}} {{cancha.mt_height + 'mt x ' +cancha.mt_width + 'mt'}}
+					p Sala {{cancha.number}} - {{cancha.material}} {{cancha.mt_height + 'mt x ' +cancha.mt_width + 'mt'}}
 					span.badge
 						| {{cancha.mode}}
-					span.badge.light(ng-if="cancha.light")
-						| Iluminada
-						i.icon.ion.ion-ios-lightbulb
-					span.badge.roof(ng-if="cancha.roof")
-						| Techada
-						i.icon.ion.ion-chevron-up
+					//- span.badge.light(ng-if="cancha.light")
+					//- 	| Iluminada
+					//- 	i.icon.ion.ion-ios-lightbulb
+					//- span.badge.roof(ng-if="cancha.roof")
+					//- 	| Techada
+					//- 	i.icon.ion.ion-chevron-up
 			.item.item-icon-right.active
 				p Comentarios
 				span
