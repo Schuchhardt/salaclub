@@ -54,7 +54,7 @@ export default ngModule => {
 				if (response.gallery.length > 0) {
 					vm.gallery = response.gallery;
 				} else {
-					vm.gallery = [{ src: response.local.img_original_url || "https://s3-sa-east-1.amazonaws.com/balompie.cl/images/canchaExample.png"}];
+					vm.gallery = [{ src: response.local.img_original_url || "https://s3-sa-east-1.amazonaws.com/ensayapp.cl/images/canchaExample.png"}];
 				}
 				if ($scope.slider) {
 					$scope.slider.updateLoop();
@@ -294,7 +294,7 @@ export default ngModule => {
 			},
 			markers: {
 				m1: {
-					name: "Balompie",
+					name: "EnsayApp",
 					lat: STGO_COORDINATES.lat,
 					lng: STGO_COORDINATES.lng,
 					icon: customIcon,
