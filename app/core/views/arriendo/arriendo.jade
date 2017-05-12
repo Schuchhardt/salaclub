@@ -135,12 +135,12 @@ ion-view(hide-nav-bar="true")
 							ion-radio(ng-model="arriendo.paymentMethod" ng-value="2")
 								| Pagar online 50% /
 								small 
-									| Reservar la cancha
+									| Reservar la Sala
 						.row(ng-class="{'option-selected': arriendo.paymentMethod == 3}" ng-show="arriendo.currentRecinto.local_payments")
 							ion-radio(ng-model="arriendo.paymentMethod" ng-value="3")
 								| Pagar en efectivo /
 								small 
-									| En la cancha
+									| En la Sala
 				.totals
 					.row
 						.col.item
