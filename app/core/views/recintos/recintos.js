@@ -39,6 +39,7 @@ export default ngModule => {
 				}
 				vm.loading = false;
 			}, (error) => {
+				vm.allRecintos = [];
 				vm.loading = false;
 				console.log(error);
 			});
