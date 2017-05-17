@@ -12,7 +12,7 @@ const ngModules = [
   	'angulartics.google.analytics'
 ];
 
-const ngModule = angular.module('ensayapp', ngModules);
+const ngModule = angular.module('salaclub', ngModules);
 
 require('./config')(ngModule);
 require('./services')(ngModule);
@@ -29,7 +29,7 @@ ngModule.run(($ionicPlatform) => {
 			window.StatusBar.styleDefault();
 		}
 	});
-	// if (CONFIG.devEnv === false && location.protocol !== 'https:' && window.location.host === 'ensayapp.cl') {
+	// if (CONFIG.devEnv === false && location.protocol !== 'https:' && window.location.host === 'salaclub.cl') {
 	// 	location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
 	// }
 });

@@ -1,26 +1,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.ensayapp.cl/#/home/recintos</loc>
+    <loc>http://www.salaclub.cl/#/home/recintos</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.ensayapp.cl/#/home/partidos</loc>
+    <loc>http://www.salaclub.cl/#/home/partidos</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
-    <loc>https://www.ensayapp.cl/#/home/mi-cuenta</loc>
+    <loc>http://www.salaclub.cl/#/home/mi-cuenta</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
    <url>
-    <loc>https://www.ensayapp.cl/#/login</loc>
+    <loc>http://www.salaclub.cl/#/login</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
    <url>
-    <loc>https://www.ensayapp.cl/#/register</loc>
+    <loc>http://www.salaclub.cl/#/register</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

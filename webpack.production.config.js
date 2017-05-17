@@ -67,7 +67,7 @@ module.exports = {
         extractCSS,
         extractSASS,
         new webpack.DefinePlugin({
-            __API__: process.env.NODE_ENV === "production" ? JSON.stringify("http://admin.ensayapp.cl/api/") : JSON.stringify("https://ensayapp-back.herokuapp.com/api/"),
+            __API__: process.env.NODE_ENV === "production" ? JSON.stringify("http://admin.salaclub.cl/api/") : JSON.stringify("https://salaclub.herokuapp.com/api/"),
         }),
         new HtmlWebpackPlugin({
             template: __dirname + '/build/index.html'
