@@ -34,7 +34,7 @@ export default ngModule => {
 						cssClass: 'success-register',
 						title: 'Usuario Creado!',
 						okType: 'primary-btn',
-						template: 'El usuario ha sido creado. Ahora puedes ingresar con tu cuenta'
+						template: 'El usuario ha sido creado. Para ingresar a tu cuenta debes confirmar tu correo con el link que envíamos.'
 					});
 					showSuccess.then( () => {
 						if (vm.isModal) {

@@ -16,9 +16,14 @@ ion-view(hide-nav-bar='true')
 		.perfil-footer
 			.row
 				button.btn-cancel(ng-click="micuenta.logOut()" ng-show="!micuenta.isGuest")
-					| Cerrar sesion
+					| Cerrar sesión
 				button.primary-btn(ui-sref="login" ng-show="micuenta.isGuest")
-					| Iniciar sesion
+					| Iniciar sesión
+			.row
+				button.secondary-btn(ui-sref="register" ng-show="micuenta.isGuest")
+					| Regístrate
+			.row
+				p contacto@salaclub.cl
 			.row
 				p Todos los derechos reservados. 2017 ® SalaClub.
 	script(id="message-modal.html" type="text/ng-template")

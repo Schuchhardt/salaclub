@@ -1,7 +1,7 @@
 .register-view{
 	top: 90px;
 	text-align: center;
-	@media(max-width: $iphone6-plus){
+	@media(max-width: $desktop){
 		padding: 0 5px;
 		.row{
 			display: block !important;
@@ -82,6 +82,8 @@
 				padding-right: 25px;
 			    width: 100%;
 			    margin-right: 0px;
+			    max-width: 100%;
+    			background: transparent;
 			}
 			&:after{
 				right: 5px;
