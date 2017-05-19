@@ -8,8 +8,8 @@
 		background-repeat: no-repeat;
 		background-position: bottom;
 		width: 100%;
-		background-position-y: -340px;
-		height: 120px;
+		// background-position-y: -340px;
+		height: 150px;
 		background-color: $light-cyan;
 	}
 	.img-profile{
@@ -27,7 +27,7 @@
 	}
 	.list{
 	    position: relative;
-	    top: 60px;
+	    top: 40px;
 	    .item{
 		    border: 0;
 		    text-align: center;

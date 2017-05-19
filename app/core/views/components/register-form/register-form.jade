@@ -41,23 +41,26 @@
 					.item.item-input.item-select
 						.input-label
 							| Genero
-						select(ng-model="register.newUser.sex" ng-class="{'black': register.newUser.sex}")
-							option(value="") Seleccione...
-							option(value="Masculino") Masculino
-							option(value="Femenino") Femenino
+						div(data-tap-disabled="true")
+							select(ng-model="register.newUser.sex" ng-class="{'black': register.newUser.sex}")
+								option(value="") Seleccione...
+								option(value="Masculino") Masculino
+								option(value="Femenino") Femenino
 			.row 
 				.col
 					.item.item-input.item-select
 						.input-label
 							| Region
-						select(ng-model="register.newUser.region" ng-options="r.id as r.name for r in register.regions" ng-change="register.loadRegionDetail(register.newUser.region)" ng-class="{'black': register.newUser.region}" required)
-							option(value="") Seleccione...
+						div(data-tap-disabled="true")
+							select(ng-model="register.newUser.region" ng-options="r.id as r.name for r in register.regions" ng-change="register.loadRegionDetail(register.newUser.region)" ng-class="{'black': register.newUser.region}" required)
+								option(value="") Seleccione...
 				.col
 					.item.item-input.item-select
 						.input-label
 							| Comuna
-						select(ng-model="register.newUser.commune" ng-options="c.id as c.name for c in register.communes" ng-class="{'black': register.newUser.commune}" required)
-							option(value="") Seleccione...
+						div(data-tap-disabled="true")
+							select(ng-model="register.newUser.commune" ng-options="c.id as c.name for c in register.communes" ng-class="{'black': register.newUser.commune}" required)
+								option(value="") Seleccione...
 		p.subtitle
 			small Crea una contraseña
 		.list
